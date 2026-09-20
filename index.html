@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+  CloudStarPan 授权回跳跳板页（部署到任意静态托管后即可使用）
+
+  部署步骤：
+    1. 把本文件上传到任意静态托管（GitHub Pages / Gitee Pages / 对象存储静态网站均可），
+       得到一个 https 地址，例如 https://xxx.github.io/oauth-redirect.html
+    2. 把该地址填入 App 的 common/AppConfig.ets -> BAIDU_REDIRECT_URI
+    3. 在百度开放平台【安全设置】登记同一个地址作为授权回调地址
+    4. （可选）坚果云 / OneDrive 等其他网盘的回调也登记这个页面，可复用
+
+  工作原理：
+    网盘授权完成后浏览器跳到本页（?code=xxx），页面立即把 query 原样转交给
+    App 的自定义 scheme（cloudstarpan://oauth?code=xxx），系统自动唤起应用。
+    若唤起失败（浏览器拦截 / 未装应用），页面显示授权码供手动复制粘贴。
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CloudStarPan 授权回跳</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f6fa;
+      font-family: -apple-system, "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+    }
+    .card {
+      width: 86%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    h1 { font-size: 18px; color: #1a1a1a; margin: 0 0 12px; }
+    p { font-size: 14px; color: #666; line-height: 1.6; margin: 8px 0; }
+    code {
+      display: block;
+      word-break: break-all;
+      background: #f2f3f5;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #4a6cf7;
+      margin: 12px 0;
+    }
+    button {
+      border: none;
+      background: #4a6cf7;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 28px;
+      border-radius: 18px;
+      cursor: pointer;
+    }
+    .ok { color: #67c23a; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>授权完成</h1>
+    <p id="status">正在返回 CloudStarPan 应用...</p>
+    <div id="manual" style="display:none">
+      <p>未能自动返回应用？请复制下面的授权码，回到应用中粘贴：</p>
+      <code id="code"></code>
+      <button type="button" onclick="copyCode()">复制授权码</button>
+      <p id="copied" class="ok" style="display:none">已复制</p>
+    </div>
+  </div>
+  <script>
+    // 把 ?code=xxx 原样转交给 App 的自定义 scheme，系统自动唤起应用
+    try {
+      location.replace('cloudstarpan://oauth' + location.search);
+    } catch (e) { /* 拦截时走下方手动兜底 */ }
+
+    setTimeout(function () {
+      var code = '';
+      try {
+        code = new URLSearchParams(location.search).get('code') || '';
+      } catch (e) { /* 老浏览器兜底：无 code 就只提示 */ }
+      if (code) {
+        document.getElementById('code').textContent = code;
+        document.getElementById('manual').style.display = 'block';
+        document.getElementById('status').textContent = '如未自动返回应用，请使用下方授权码';
+      } else {
+        document.getElementById('status').textContent = '未收到授权码，请返回应用重新发起登录';
+      }
+    }, 1200);
+
+    function copyCode() {
+      var code = document.getElementById('code').textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code);
+      } else {
+        var input = document.createElement('textarea');
+        input.value = code;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+      document.getElementById('copied').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
