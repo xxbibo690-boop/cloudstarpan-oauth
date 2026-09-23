@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>云星盘隐私政策</title>
+<style>
+  body {
+    margin: 0;
+    background: #f5f6fa;
+    font-family: -apple-system, "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+    color: #1a1a1a;
+    line-height: 1.75;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 56px; }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  .meta { font-size: 12px; color: #999; margin: 0 0 20px; }
+  h2 {
+    font-size: 16px;
+    margin: 28px 0 10px;
+    padding-left: 10px;
+    border-left: 3px solid #4a6cf7;
+    line-height: 1.4;
+  }
+  p { font-size: 14px; color: #333; margin: 8px 0; }
+  ol, ul { font-size: 14px; color: #333; padding-left: 24px; margin: 8px 0; }
+  li { margin: 6px 0; }
+  ul { color: #666; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #121212; color: #e6e6e6; }
+    .card { background: #1e1e1e; box-shadow: none; }
+    p, ol, ul { color: #cfcfcf; }
+    ul { color: #a8a8a8; }
+    .meta { color: #8a8a8a; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>云星盘隐私政策</h1>
+    <p class="meta">更新日期：2026-09-23　·　生效日期：2026-09-23</p>
+<h2>一、我们收集和使用的信息</h2>
+<ol>
+<li value="1">网盘授权凭据：当你选择接入百度网盘、OneDrive、Dropbox、Box、WebDAV 等第三方网盘服务时，本应用会通过对应服务商的 OAuth 授权流程获取访问令牌（Access Token / Refresh Token），或由你手动填写 WebDAV 服务器地址、账号与应用密码、GitHub 个人访问令牌。用途：仅为代表你向该网盘服务发起你主动触发的操作（浏览、搜索、上传、下载、预览）。</li>
+<li value="2">文件列表元数据：为完成上述功能，本应用会在你使用过程中向对应网盘服务请求文件名、路径、大小、修改时间、缩略图地址等元数据。用途：在界面上展示目录结构、支持排序/筛选/搜索、生成本地缓存文件。</li>
+<li value="3">你主动填写的开发者密钥（可选）：仅当你主动在应用内"开发者密钥"页面填写百度/Box 开放平台凭证时，本应用才会保存该信息。</li>
+<li value="4">本机偏好设置：排序方式、浏览选项、深色模式、下载并发与限速、缓存清理周期等。用途：在下次启动时恢复你的使用习惯。</li>
+</ol>
+<p>本应用不会收集你的姓名、手机号、身份证号、通讯录、短信、精确位置、相册、设备唯一标识符（IMEI/OAID 等）、应用安装列表等任何与你使用网盘功能无关的信息，也不会在后台自动上传任何文件内容。</p>
+<h2>二、信息的存储</h2>
+<ol>
+<li value="1">上述凭据与配置信息仅保存在你的设备本机应用沙箱内（优先使用系统级加密存储 Asset Store Kit），不会上传到本应用的任何服务器——本应用不运营任何后端服务器。</li>
+<li value="2">本应用不采集、不上传你的任何文件内容；预览与下载产生的缓存文件全部位于应用沙箱内，你可随时清理。</li>
+<li value="3">凭据仅用于向你自己授权的网盘服务发起请求，不会提供给任何第三方。</li>
+<li value="4">存储期限：凭据与偏好保存在本机，直至你主动退出登录、清除应用数据或卸载本应用。</li>
+</ol>
+<h2>三、信息的共享、转让与公开披露</h2>
+<ol>
+<li value="1">本应用不会向任何第三方出售、出租或公开你的个人信息，也不会将你的个人信息转让给任何第三方。</li>
+<li value="2">为实现核心功能，本应用必然需要将你的访问请求转发给对应网盘服务商（百度、微软、Dropbox、Box、GitHub、你的 WebDAV 服务器等）。这些请求受对应服务商隐私政策约束，请你一并阅读：</li>
+</ol>
+<ul>
+<li>百度网盘开放平台相关协议与隐私政策</li>
+<li>Microsoft 隐私声明（OneDrive）</li>
+<li>Dropbox 隐私政策</li>
+<li>Box 隐私政策</li>
+<li>GitHub 隐私声明</li>
+<li>你的 WebDAV 服务商条款</li>
+</ul>
+<ol>
+<li value="3">除法律法规要求或政府主管部门依法要求外，我们不会披露你的信息。</li>
+</ol>
+<h2>四、第三方 SDK 说明</h2>
+<p>本应用未集成任何第三方统计分析、广告、推送或数据采集类 SDK。应用内使用的音视频播放、图片解码、网络请求等能力均由 HarmonyOS 系统能力（HarmonyOS SDK）直接提供，不涉及向第三方传输个人信息。</p>
+<h2>五、应用权限说明</h2>
+<ol>
+<li value="1">ohos.permission.INTERNET（网络访问）：用于与各网盘服务器通信，实现浏览、搜索、上传、下载、预览与播放。</li>
+<li value="2">ohos.permission.GET_NETWORK_INFO（获取网络状态）：用于识别当前网络是否可用、是否为移动网络，以便按你的设置控制"仅 Wi-Fi 下传输"等行为，并在离线时给出提示。</li>
+</ol>
+<p>本应用不申请相机、麦克风、通讯录、位置、相册、存储等任何其他敏感权限。</p>
+<h2>六、你的权利</h2>
+<ol>
+<li value="1">查阅与更正：你可在应用内查看已接入的账号与相关设置，并随时修改。</li>
+<li value="2">删除与撤回授权：你可在应用内对任一账号执行"退出登录"，本应用会删除该账号在本机保存的凭据；你也可以在对应网盘服务商的官网撤销对本应用的授权。卸载本应用会一并删除本机保存的全部数据。</li>
+<li value="3">撤回隐私政策同意：你可在"设置 → 关于 → 撤回隐私政策同意"中撤回同意。撤回后本应用将退出，并在下次启动时重新征求你的同意。</li>
+<li value="4">缓存数据清除：你可在"设置 → 缓存管理"中查看并清除预览、缩略图、下载临时文件与解压产物。</li>
+</ol>
+<h2>七、未成年人保护</h2>
+<p>本应用面向成年人提供工具服务。未成年人应在监护人指导下使用本应用；若你是未成年人的监护人，对你所监护的未成年人使用本应用有任何疑问，请通过下方方式与我们联系。</p>
+<h2>八、政策的变更</h2>
+<p>我们可能适时更新本政策。更新后会在应用内或应用发布页面公布；若涉及信息处理方式的重大变更，本应用会在你下次启动时重新征求你的同意。</p>
+<h2>九、联系我们</h2>
+<p>如果你对本政策或个人信息保护有任何疑问、意见或建议，请通过以下方式联系我们，我们将在收到反馈后 15 个工作日内回复：</p>
+<p>电子邮箱：1272569064@qq.com</p>
+<p>应用发布页：华为应用市场搜索"云星盘"</p>
+  </div>
+</div>
+</body>
+</html>
